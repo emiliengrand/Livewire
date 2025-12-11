@@ -1,27 +1,32 @@
-/vendor/
-node_modules/
+#!/usr/bin/env php
+<?php
 
-npm-debug.log
-yarn-error.log
-.phpunit.result.cache
+use Illuminate\Contracts\Console\Kernel;
 
-.env
-.env.*.backup
+define('LARAVEL_START', microtime(true));
 
-storage/logs
-storage/framework/sessions
-storage/framework/views
-storage/framework/cache/data
-storage/framework/testing
-storage/app/public
+require __DIR__.'/vendor/autoload.php';
 
-!/public/storage
+/*
+|--------------------------------------------------------------------------
+| Bootstrap The Application
+|--------------------------------------------------------------------------
+|
+| Here we will bootstrap the Laravel application and run it. This will
+| allow us to run any console commands provided by the application.
+|
+*/
 
-.DS_Store
-Thumbs.db
-.idea
-.vscode
-*.sublime-workspace
-*.sublime-project
+$app = require __DIR__.'/bootstrap/app.php';
 
-/public/build
+/** @var \Illuminate\Contracts\Console\Kernel $kernel */
+$kernel = $app->make(Kernel::class);
+
+$status = $kernel->handle(
+    $input = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
+$kernel->terminate($input, $status);
+
+exit($status);
