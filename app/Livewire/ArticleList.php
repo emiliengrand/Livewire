@@ -12,10 +12,9 @@ class ArticleList extends Component
 
     public $search = '';
 
-    // garde la recherche dans l’URL
     protected $queryString = ['search'];
 
-    // reset la page quand on change la recherche
+    // reset la page quand on change la recherche MAIS CA MARCHE PAS !!!!!!!!!!!!!!!!!!
     public function updatedSearch()
     {
         $this->resetPage();

@@ -44,10 +44,8 @@ class ArticleForm extends Component
 
         session()->flash('message', 'Article enregistré.');
 
-        // On remet le formulaire à zéro
         $this->reset(['title', 'body', 'image', 'articleId']);
 
-        // On repart sur la première page de la liste
         $this->resetPage();
     }
 
