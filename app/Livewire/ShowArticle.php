@@ -15,6 +15,12 @@ class ShowArticle extends Component
         $this->article->incrementViews();
     }
 
+    public function like()
+    {   
+        $this->article->increment('likes');
+        $this->article->refresh();
+    }
+
     public function render()
     {
         return view('public.show', [
