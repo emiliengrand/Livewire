@@ -19,30 +19,29 @@
         </div>
     @endif
 
-    {{-- Contenu --}}
     <section class="bg-white border border-slate-200 rounded-[22px] p-6 leading-relaxed text-[15px] text-slate-800">
         {!! nl2br(e($article->body)) !!}
     </section>
 
     <footer class="pt-4 border-t border-dashed border-slate-300 flex items-center justify-between text-[11px] text-slate-500 uppercase tracking-[0.25em]">
-    <span>Mini Blog</span>
+        <span>Mini Blog</span>
 
-    <div class="flex items-center gap-4">
-        <button
-            wire:click="like"
-            class="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase hover:text-red-500 transition"
-            type="button"
-        >
-            <span class="@if($article->likes > 0) text-red-500 @else text-slate-400 @endif text-lg leading-none">
-                ❤️
-            </span>
-            <span>{{ $article->likes }}</span>
-        </button>
+        <div class="flex items-center gap-4">
+            <button
+                type="button"
+                wire:click="toggleLike"
+                class="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase hover:text-red-500 transition"
+            >
+                <span class="@if($hasLiked) text-red-500 @else text-slate-400 @endif text-lg leading-none">
+                    ❤️
+                </span>
+                <span>{{ $article->likes }}</span>
+            </button>
 
-        <a href="{{ route('home') }}" class="hover:text-slate-800">
-            ← Retour aux articles
-        </a>
-    </div>
+            <a href="{{ route('home') }}" class="hover:text-slate-800">
+                ← Retour aux articles
+            </a>
+        </div>
     </footer>
 
 </div>
